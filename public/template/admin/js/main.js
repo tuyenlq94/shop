@@ -23,9 +23,8 @@ function removeRow( id, url ) {
 	}
 };
 
-/*Upload file*/
+/*Upload File */
 $( '#upload' ).change( function () {
-	console.log( 123 );
 	const form = new FormData();
 	form.append( 'file', $( this )[ 0 ].files[ 0 ] );
 
@@ -37,7 +36,14 @@ $( '#upload' ).change( function () {
 		data: form,
 		url: '/admin/upload/services',
 		success: function ( results ) {
-			console.log( results );
+			if ( results.error === false ) {
+				$( '#image_show' ).html( '<a href="' + results.url + '" target="_blank">' +
+					'<img src="' + results.url + '" width="100px"></a>' );
+
+				$( '#thumb' ).val( results.url );
+			} else {
+				alert( 'Upload File Lỗi' );
+			}
 		}
 	} );
 } );
