@@ -40,10 +40,14 @@ class ProductAdminService {
 			Session::flash( 'success', 'Thêm sản phẩm thành công' );
 		} catch ( \Exception $err ) {
 			Session::flash( 'error', 'Thêm sản phẩm lỗi' );
-			\Log::info( $err->getMessage() );
+			// \Log::info( $err->getMessage() );
 			return false;
 		}
 
 		return true;
+	}
+
+	public function get() {
+		return Product::with( 'menu' )->orderByDesc( 'id' )->paginate( 15 );
 	}
 }
