@@ -4,6 +4,7 @@ namespace App\Http\Services\Product;
 use App\Models\Menu;
 use App\Models\Product;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Log;
 
 class ProductAdminService {
 	public function getMenu() {
@@ -40,7 +41,7 @@ class ProductAdminService {
 			Session::flash( 'success', 'Thêm sản phẩm thành công' );
 		} catch ( \Exception $err ) {
 			Session::flash( 'error', 'Thêm sản phẩm lỗi' );
-			// \Log::info( $err->getMessage() );
+			Log::info( $err->getMessage() );
 			return false;
 		}
 
