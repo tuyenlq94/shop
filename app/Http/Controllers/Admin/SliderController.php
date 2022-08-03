@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Services\Slider\SliderService;
+use App\Models\Slider;
 
 class SliderController extends Controller {
 	protected $slider;
@@ -36,5 +37,26 @@ class SliderController extends Controller {
 			'title'   => 'Danh sách slider',
 			'sliders' => $this->slider->get(),
 		]);
+	}
+
+	public function show( Slider $slider ) {
+		return view('admin.slider.edit', [
+			'title'  => 'Chỉnh sửa slider',
+			'slider' => $slider,
+		]);
+	}
+
+	public function update( Request $request, Slider $slider ) {
+		$this->validate($request, [
+			'name'  => 'required',
+			'thumb' => 'required',
+			'url'   => 'required',
+		]);
+		$result = $this->slider->update( $request, $slider );
+		if ( $result ) {
+			return redirect( '/admin/sliders/list' );
+		}
+
+		return redirect()->back();
 	}
 }
