@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 .main-menu>li>a,
-.main-menu-m>li>a {
+.main-menu-m>li>a,
+.ltext-102 {
 	font-family: 'Roboto', sans-serif !important;
 }
