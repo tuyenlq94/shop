@@ -5,8 +5,7 @@ $.ajaxSetup( {
 } );
 
 function loadMore() {
-	const page = $( '#page' ).val();
-	console.log( 'page', page );
+	const page = Number( $( '#page' ).val() );
 	$.ajax( {
 		type: 'POST',
 		dataType: 'JSON',
@@ -17,8 +16,8 @@ function loadMore() {
 				$( '#loadProduct' ).append( result.html );
 				$( '#page' ).val( page + 1 );
 			} else {
-				//alert( 'Đã load hết sản phẩm' );
-				//$( '#button-loadMore' ).css( 'display', 'none' );
+				alert( 'Đã load hết sản phẩm' );
+				$( '#button-loadMore' ).css( 'display', 'none' );
 			}
 		}
 	} );

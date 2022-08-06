@@ -2,6 +2,7 @@
 
 .main-menu>li>a,
 .main-menu-m>li>a,
-.ltext-102 {
+.ltext-102,
+.sub-menu a {
 	font-family: 'Roboto', sans-serif !important;
 }
