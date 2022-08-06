@@ -6,3 +6,8 @@
 .sub-menu a {
 	font-family: 'Roboto', sans-serif !important;
 }
+
+svg {
+	width: 24px;
+	height: 24px;
+}
